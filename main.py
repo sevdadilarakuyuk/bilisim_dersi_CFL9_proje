@@ -83,7 +83,11 @@ while True:
         pass
 
     elif selection=="4":
-        pass
+        shape.pen.clear()
+        depth = screen.numinput("SPİRAL", "Spiralin derinliğini giriniz: ", minval=10)
+        depth = screen.numinput("SPİRAL", "Spiralin derinliğini giriniz: ", minval=10)        shape.Spiral(depth)
+        turtle.getcanvas().focus_force()
+        selection=""
 
 
 screen.mainloop()

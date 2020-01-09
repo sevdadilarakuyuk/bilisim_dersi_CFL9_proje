@@ -37,5 +37,14 @@ class Shape():
     def Cube(self, length):
         pass 
     
-    def Cube(self, deep):
-        pass 
+    def Spiral(self, depth):
+        self.pen.goto(0,0)
+        self.pen.down(); 
+        self.pen.showturtle()
+
+        for i in range(int(depth)):
+            self.pen.forward(i*5)
+            self.pen.right(120)
+        
+        self.pen.up()
+        self.pen.hideturtle()
