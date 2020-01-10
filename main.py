@@ -1,5 +1,4 @@
 import turtle
-import random
 
 import shape
 
@@ -7,8 +6,8 @@ import shape
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
 
-selection = ""              # Kullanıcı seçiminin tutulacağım değişken
-shape = shape.Shape()       # Shape kütüphanesi nesnesi yarattık
+selection = ""              # Kullanıcı seçiminin tutulacağı değişken
+shape = shape.Shape()       # shape adında Shape kütüphanesi nesnesi yarattık
 
 # Turtle çizim ekranını oluşturalım
 screen = turtle.Screen()
@@ -58,37 +57,44 @@ screen.onkey(selection_is_star, "2")
 screen.onkey(selection_is_cube, "3")
 screen.onkey(selection_is_spiral, "4")
 
-
 #program ana döngüsü
 while True:
     # 
     screen.update()
 
-    if selection=="1":
+    if selection=="1":  # Poligon
         shape.pen.clear()
+        shape.pen.setheading(0)
         side = screen.numinput("POLİGON", "Poligon kenar sayısını giriniz: ", minval=3)
-        length = screen.numinput("POLİGON", "Poligon bir kenar uzunluğunu giriniz: ", minval=1)
+        length = screen.numinput("POLİGON", "Poligon bir kenar uzunluğunu giriniz: ", minval=10)
         shape.Polygon(side, length)
         turtle.getcanvas().focus_force()
         selection=""
 
-    elif selection=="2":
+    elif selection=="2":  # Yıldız
         shape.pen.clear()
-        length = screen.numinput("YILDIZ", "Yıldızın bir kenar uzunluğunu giriniz: ", minval=1)
+        shape.pen.setheading(0)
+        length = screen.numinput("YILDIZ", "Yıldızın bir kenar uzunluğunu giriniz: ", minval=10)
         shape.Star(length)
         turtle.getcanvas().focus_force()
         selection=""
 
-    elif selection=="3":
-        pass
-
-    elif selection=="4":
+    elif selection=="3":  # Küp
         shape.pen.clear()
-        depth = screen.numinput("SPİRAL", "Spiralin derinliğini giriniz: ", minval=10)
-        depth = screen.numinput("SPİRAL", "Spiralin derinliğini giriniz: ", minval=10)        shape.Spiral(depth)
+        shape.pen.setheading(0)
+        length = screen.numinput("KÜP", "Küpün bir kenar uzunluğunu giriniz: ", minval=10)
+        shape.Cube(length)
         turtle.getcanvas().focus_force()
         selection=""
 
+    elif selection=="4":  # Spiral
+        shape.pen.clear()
+        shape.pen.setheading(0)
+        depth = screen.numinput("SPİRAL", "Spiralin derinliğini giriniz: ", minval=5, maxval=30)
+        gap = screen.numinput("SPİRAL", "Spiral sarmalları arası? (1: dar; 2:orta; 3:geniş): ", minval=1, maxval=3)        
+        shape.Spiral(depth, gap)
+        turtle.getcanvas().focus_force()
+        selection=""
 
 screen.mainloop()
 
